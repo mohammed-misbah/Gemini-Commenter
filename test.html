@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="test()">Test Gemini</button>
+
+<script>
+function test(){
+ const API_KEY = "AIzaSyBHwMF_EkUAq5vJzh9qENpGJh20yecXdQQ";
+
+ fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash-lite:generateContent?key=${API_KEY}`, {
+  method:"POST",
+  headers:{ "Content-Type":"application/json"},
+  body:JSON.stringify({
+    contents:[{parts:[{text:"Say hello"}]}]
+  })
+})
+.then(r=>r.json())
+.then(data=>{
+  console.log(data);
+  alert(JSON.stringify(data));
+});
+
+}
+</script>
+
+</body>
+</html>

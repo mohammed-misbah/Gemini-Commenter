@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "GEMINI Comment Generator",
+  "version": "1.0",
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*"
+  ],
+
+  "background": {
+    "service_worker": "backend.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["generate.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["ai-logo.png"],
+      "matches": ["https://www.linkedin.com/*"]
+    }
+  ]
+}
